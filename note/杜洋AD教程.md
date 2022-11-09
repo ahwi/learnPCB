@@ -523,4 +523,89 @@ pcb板画好后还可以在图里面加一些版本号、创建者信息等。
 
    <img src="assets/image-20221106215447110.png" alt="image-20221106215447110" style="zoom:33%;" />
 
-视频看到 p7 23:30
+7. 画轮廓：
+
+   1) 修改宽度线为startX, startY为0, -4.5  endX,endY为 0,4.5
+
+   ​	<img src="杜洋AD教程.assets/image-20221109212717286.png" alt="image-20221109212717286" style="zoom: 25%;" />
+
+   2) 把栅格大小改成4.5mm：快捷键gg -->4.5mm
+
+   3) 画右侧轮廓： 把栅格大小改成14.5mm；`ctrl + c` --> 左键点击原点为参考点 --> `ctrl + v` 粘贴 -->左键选择粘贴点
+
+   ​	<img src="杜洋AD教程.assets/image-20221109213217133.png" alt="image-20221109213217133" style="zoom:33%;" />
+
+   4) 画完另外两条轮廓：pl -->画轮廓
+
+   ​	<img src="杜洋AD教程.assets/image-20221109213554969.png" alt="image-20221109213554969" style="zoom:33%;" />
+
+   5) 
+
+### 3. pcb元件库和原理图关联
+
+1. 回到原理图
+
+2. Tools --> `Footprint Manager` --> 选择`Header 3` --> `edit` -->弹框选 `Any` -->`Browse` -->选`PcbLib1.PcbLib`库
+
+   <img src="杜洋AD教程.assets/image-20221109214502535.png" alt="image-20221109214502535" style="zoom:33%;" /> 
+
+3. 点击`Pin Map`确认引脚是否对应
+
+   <img src="杜洋AD教程.assets/image-20221109214940966.png" alt="image-20221109214940966" style="zoom:33%;" />
+
+4. `ok` --> `ok` --> `Accept Changes(Create Eco)`
+
+   ![image-20221109215127251](杜洋AD教程.assets/image-20221109215127251.png)
+
+5. `Validate Changes` --> `Execute Changes`  --> 保存原理图
+
+6. 更新pcb:`Design` --> `Update PCB Document xxxx`
+
+   ![image-20221109215446117](杜洋AD教程.assets/image-20221109215446117.png)
+
+7. 生效更改/执行更改：`Validate Changes` --> `Execute Changes`
+
+   ![image-20221109215609979](杜洋AD教程.assets/image-20221109215609979.png)
+
+8. 删掉红框：
+
+   ![image-20221109215716156](杜洋AD教程.assets/image-20221109215716156.png)
+
+### 4. 去掉电源pcb元件库多余的线
+
+电源pcb元件库的线传过了焊盘，会有报警，现在去掉多余的线
+
+1. 把栅格改成1mm: gg-->1mm
+
+2. 选中要切割的线 --> e（编辑的快捷键） --> `Slice Tracks` 切断轨迹，切割完后的效果：
+
+   <img src="杜洋AD教程.assets/image-20221109221125459.png" alt="image-20221109221125459" style="zoom:33%;" />
+
+3. 更新变化：
+
+   <img src="杜洋AD教程.assets/image-20221109221319349.png" alt="image-20221109221319349" style="zoom:33%;" />
+
+4. 扩大板子：
+
+   * 拉大外框
+
+     ![image-20221109221840341](杜洋AD教程.assets/image-20221109221840341.png)
+
+   * 选中所有元素-->`Designer` --> `Board Shape` --> `Define Board Share frome Selected Objects`
+
+     ![image-20221109222202458](杜洋AD教程.assets/image-20221109222202458.png)
+
+5. 连好线
+
+   ![image-20221109222848363](杜洋AD教程.assets/image-20221109222848363.png)
+
+6. 设计规则检查：
+
+   `Tools` --> `Design Rule Check`--> `Run Design Rule Check`
+
+7. `P1`改成`DC 6V`
+
+   ![image-20221109223336730](杜洋AD教程.assets/image-20221109223336730.png)
+
+### 5. 查看3D效果图
+
