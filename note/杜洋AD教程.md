@@ -610,3 +610,180 @@ pcb板画好后还可以在图里面加一些版本号、创建者信息等。
 ### 5. 查看3D效果图
 
 ![image-20221109223410714](杜洋AD教程.assets/image-20221109223410714.png)
+
+
+
+## 第8课 PCB的设计规则
+
+软件根据设计规则来判断走线、画板是否有问题。
+
+在pcb图纸页面，点击`Design` --> `Rules`
+
+![image-20221110214625430](杜洋AD教程.assets/image-20221110214625430.png)
+
+左侧栏分为10大类：
+
+* Electrical：电气类
+* Routing：布线类
+* SMT：贴片类
+* Mask：遮盖和屏蔽
+* Plane：放置
+* Testpoint：测试点
+* Manufacturing：制板规则
+* High Speed：高频电路的设置
+* Placement：原件放置（3D模型相关）
+* Signal Integrity：型号完整性规则
+
+接下来详细看一下每项的内容
+
+### 1. Electrical 电气类
+
+#### Clearance 距离
+
+ Electrical --> Clearance --> Clearance 距离
+
+<img src="杜洋AD教程.assets/image-20221110215507563.png" alt="image-20221110215507563" style="zoom:50%;" />
+
+* Constraints 约束框:
+
+  ![image-20221110220114961](杜洋AD教程.assets/image-20221110220114961.png)
+
+	* Different Nets Only  不同网络之间的间隔
+	* Same Net Only	同一网络之间的间隔
+	* Any Net	任意网络之间的间隔
+	* Different Differential pair	不同的差分对约束
+	* Same Differential Pair	相同的差分对约束
+	
+	> 两个本应该连在一块的导线，叫做同一网络；如果两个不应该连在一块的导线叫做不同网络。一般设置不同网络`Different Nets Only`就可以了，
+
+* 针对不同区域、层级设置不同的规则（属于高级设置，用到的比较少，一般的两层板用不太到）
+
+  ![image-20221110222015554](杜洋AD教程.assets/image-20221110222015554.png)
+
+#### Short-Circuit 短路
+
+![image-20221110222220209](杜洋AD教程.assets/image-20221110222220209.png)
+
+`Allow Shot Circuit`是否运行短路
+
+> 默认都选择不短路，日常设计中一般没有涉及到这个设置
+
+
+
+#### un-routed net 非路由网络
+
+主要是检查导线是否连接
+
+![image-20221110222654101](杜洋AD教程.assets/image-20221110222654101.png)
+
+### 2. Routing 布线类
+
+#### Width 线宽
+
+![image-20221110223420244](杜洋AD教程.assets/image-20221110223420244.png)
+
+> 只有电气连接的导线才会受线宽的约束，如果你在空白地方画一个`+`之类的，是不会有这个约束。
+
+可以对不同的层进行线宽设置
+
+![image-20221110223654318](杜洋AD教程.assets/image-20221110223654318.png)
+
+#### Routing Topology路由拓扑
+
+在自动布线时，可以选择不同的拓扑原则
+
+![image-20221110223910903](杜洋AD教程.assets/image-20221110223910903.png)
+
+> 以后会介绍自动布线，目前画的都是小图，用手动布线更好一点
+
+#### Routing Priority 行程优先权
+
+自动布线时，选择对哪个区域、哪个层级优先布线
+
+![image-20221110224231285](杜洋AD教程.assets/image-20221110224231285.png)
+
+#### Routing Layers 路由层级
+
+选择自动布线在哪些层级布线
+
+![image-20221110224422123](杜洋AD教程.assets/image-20221110224422123.png)
+
+#### Routing Corners 布线拐角
+
+可以选择自动布线拐角的大小
+
+![image-20221110224621801](杜洋AD教程.assets/image-20221110224621801.png)
+
+#### routing via style 布线过孔样式规则
+
+自动布线时的孔大小
+
+![image-20221110224916993](杜洋AD教程.assets/image-20221110224916993.png)
+
+#### fanout control扇出布线
+
+关于封装的一些设置，我们这边不会修改到
+
+![image-20221110225141610](杜洋AD教程.assets/image-20221110225141610.png)
+
+#### Differential Pairs Routing 差分对布线
+
+关于差分信号的一些布线规则，我们这边也没涉及到
+
+![image-20221110225226210](杜洋AD教程.assets/image-20221110225226210.png)
+
+### 3. SMT 贴片类
+
+![image-20221110225724898](杜洋AD教程.assets/image-20221110225724898.png)
+
+可以在选项中点击右键，`New Rule`添加新规则
+
+#### SMD To Corner 贴片到角落
+
+设置芯片焊盘上的导线往外走多远才能拐弯
+
+![image-20221110225928607](杜洋AD教程.assets/image-20221110225928607.png)
+
+#### SMD To Plane 焊盘到过孔
+
+设置焊盘到过孔的距离
+
+![image-20221110230133386](杜洋AD教程.assets/image-20221110230133386.png)
+
+#### SMD Neck-Down 焊盘颈状收缩
+
+焊盘引出来的导线，导线相对焊盘是变窄的，这边设置的是这个变窄比例。
+
+> 一般用不到，因为导线一般设置宽度了。
+
+![image-20221110230549843](杜洋AD教程.assets/image-20221110230549843.png)
+
+#### SMD Entry
+
+AD9没有 视频没介绍
+
+![image-20221110230927472](杜洋AD教程.assets/image-20221110230927472.png)
+
+
+
+### 4. Mask 屏蔽和遮盖
+
+#### Solder Mask Expansion 阻焊层延伸量
+
+设置阻焊层和焊盘之间的距离
+
+![image-20221110231142463](杜洋AD教程.assets/image-20221110231142463.png)
+
+#### Paste Mask Expansion 锡膏防护层（或助焊层、钢网层）
+
+跟厂家生产焊接电路有关系，这边不需要设置
+
+![image-20221110231745707](杜洋AD教程.assets/image-20221110231745707.png)
+
+> Paste Mask Layers: 锡膏防护层（或助焊层、钢网层），是针对表贴（SMD）元件的。
+>
+> 该层用来制作钢膜（片）﹐而钢膜上的孔就对应着电路板上的SMD器件的焊点。在SMD器件焊接时﹐先将钢膜盖在电路板上（与实际焊盘对应）﹐然后将锡膏涂上﹐用刮片将多余的锡膏刮去﹐移除钢膜﹐这样SMD器件的焊盘就加上了锡膏﹐之后贴片机将SMD器件贴附到锡膏上面﹐最后通过回流焊机加热完成SMD器件的焊接。
+>
+> 通常钢膜上孔径的大小会比电路板上实际的焊盘小一些。
+>
+> 参考资料：https://jingyan.baidu.com/article/90bc8fc8b523a5f653640c3e.html
