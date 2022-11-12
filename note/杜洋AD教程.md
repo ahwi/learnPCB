@@ -787,3 +787,82 @@ AD9没有 视频没介绍
 > 通常钢膜上孔径的大小会比电路板上实际的焊盘小一些。
 >
 > 参考资料：https://jingyan.baidu.com/article/90bc8fc8b523a5f653640c3e.html
+
+### 5. Plane 放置
+
+覆铜层：是把不用的地方用铜给盖住，有覆铜的板子会更坚固，覆铜接地的话会使板子的接地面积更大、抗干扰能力更强、效果更好。
+
+这一规则就是覆铜相关的规则，后面遇到会再讲解，先暂时略过。
+
+### 6. Testpoint 测试点
+
+很复杂的板子、或者大厂的板子都会有测试点，万一里面有断路，可以检测出来。
+
+我们这边没有用到，略过。
+
+### 7. Manufacturing 板厂工艺规则
+
+#### Minimum Annular Ring 最小焊环规则
+
+ <img src="assets/image-20221112154117046.png" alt="image-20221112154117046" style="zoom: 33%;" />
+
+#### Acute Angle 锐角
+
+一般设置不小于90°或着135°
+
+<img src="assets/image-20221112154231216.png" alt="image-20221112154231216" style="zoom: 33%;" />
+
+#### Hole Size 孔大小
+
+设置孔的最大、最小规则。
+
+<img src="assets/image-20221112154431722.png" alt="image-20221112154431722" style="zoom: 33%;" />
+
+#### Layer Pairs
+
+设置是否强制检查实际使用的钻孔层对与系统设置的钻孔层对的匹配情况。
+
+`Enforce layer pairs settings`：是否进行钻孔层对是否匹配的强制检查
+
+<img src="assets/image-20221112155055097.png" alt="image-20221112155055097" style="zoom:33%;" />
+
+> 通常过孔都会直接穿过整个板子，但是有些复杂的多层板可能孔只会到某一层，而没有贯穿。
+
+#### Hole To Hole Clearance 过孔之间的距离
+
+<img src="assets/image-20221112155509525.png" alt="image-20221112155509525" style="zoom: 33%;" />
+
+#### Minimum Solder Mask Sliver 最小阻焊间隙
+
+<img src="assets/image-20221112155716227.png" alt="image-20221112155716227" style="zoom:33%;" />![image-20221112155903477](assets/image-20221112155903477.png)
+
+#### Silk To Solder Mask Clearance丝印和焊盘之间的距离
+
+<img src="assets/image-20221112155716227.png" alt="image-20221112155716227" style="zoom:33%;" />![image-20221112155903477](assets/image-20221112155903477.png)![image-20221112160015915](assets/image-20221112160015915.png)
+
+#### Silk To Silk Clearance 丝印和丝印之间的间距
+
+<img src="assets/image-20221112155716227.png" alt="image-20221112155716227" style="zoom:33%;" />![image-20221112155903477](assets/image-20221112155903477.png)![image-20221112160015915](assets/image-20221112160015915.png)
+
+#### Net Antennae 网络天线
+
+Net Antennae Tolerance 网络卷须容忍度
+
+<img src="assets/image-20221112160425961.png" alt="image-20221112160425961" style="zoom:33%;" />
+
+#### Board Outline Clearance 板轮廓间隙
+
+<img src="assets/image-20221112160853431.png" alt="image-20221112160853431" style="zoom:33%;" />
+
+### 8. High Speed 高频电路
+
+高频电路相关，这边没涉及，略过。
+
+### 9. Placement 原件放置（3D模型相关）
+
+3D模型相关的规则，略过。
+
+### 10. Signal Integrity 型号完整性规则
+
+信号完整性规则，略过。
+
